@@ -1,11 +1,6 @@
 #!/bin/bash
 # init
 
-#function pause(){
-#   read -p "$*"
-#}
-
-
 rd=$(tput setaf 1) # Red/Rood
 gr=$(tput setaf 2) # Green/Groen
 gl=$(tput setaf 3) # Yellow/Geel
