@@ -7,12 +7,13 @@ echo "is dit een raspberry pi? (zo ja type ja, zo niet type nee, anders druk op 
 read x
 if [ "x$x" = "xja" ] ; then
 echo "Ok, we gaan de tools klaar zetten voor U."
-cd ./bin/
+cd ./bin
 cd ./set_overscan
 apt-get install gcc automake curl make python -y
 make
 chmod +x set_overscan.sh
 mv set_overscan.sh /usr/bin/overscan
+cd ..
 cd ..
 cp -r ./bin/set_overscan /usr/bin/set_overscan
 chmod +x ./bin/arch
@@ -22,10 +23,10 @@ chmod +x ./bin/systeminfo
 chmod +x ./bin/uninstaller.sh
 chmod +x ./bin/ipconfig.sh
 mkdir /usr/bin/TB
-mv ./bin/arch /usr/bin/TB
-mv ./bin/wifi /usr/bin/TB
-mv ./bin/kabel /usr/bin/TB
-mv ./bin/uninstaller.sh /usr/bin/TB
+mv ./bin/arch /usr/bin/TB/
+mv ./bin/wifi /usr/bin/TB/
+mv ./bin/kabel /usr/bin/TB/
+mv ./bin/uninstaller.sh /usr/bin/TB/
 mv ./bin/systeminfo /usr/bin/systeminfo
 mv ./bin/ipconfig.sh /usr/bin/ipconfig
 mv ./bin/tuir /usr/bin/Tool-box
