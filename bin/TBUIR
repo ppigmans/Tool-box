@@ -1,0 +1,118 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+#title           : TBUI
+#Omschijving	 : Geeft een simpel menu weer dat interactief is/shows a menu which is interactive
+#Made by 	 : Patrick Pigmans
+#Made for	 : Servicenet-ITF
+#Made at	 : 1st of August 2016
+#python_version  : 2.7.12/3.5.2  
+#=======================================================================
+ 
+# Import the modules needed to run the script.
+from os import system
+import sys, os
+import curses 
+from termcolor import colored, cprint
+
+# Main definition - constants
+menu_actions  = {}  
+c = colored('+', 'green', attrs=['bold'])
+h = colored('-', 'green', attrs=['bold'])  
+def execute_cmd(cmd_string):
+        system("clear")
+        a = system(cmd_string)
+
+
+# =======================
+#     MENUS FUNCTIONS
+# =======================
+ 
+# Main menu
+def main_menu():
+    os.system('clear')
+    print c + h*78 + c
+    print c + " "*34 + "KEUZE MENU" + " "*34 + c
+    print c + " "*32 + "Kies een optie" + " "*32 + c
+    print c + h*78 + c
+    print c + " "*24 + "1. Systeem informatie bekijken" + " "*24 + c
+    print c + " "*29 + "2. IP adres opvragen" + " "*29 + c
+    print c + " "*25 + "3. Zwarte balken verwijderen" + " "*25 + c
+    print c + " "*26 + "4. De Raspberry Pi updaten" + " "*26 + c
+    print c + " "*29 + "5. Tools Verwijderen" + " "*29 + c
+    print c + h*78 + c
+    print c + " "*33 + "0. Afsluiten" + " "*33 + c 
+    print c + h*78 + c 
+    print
+    choice = raw_input (" "*30 + " Kies een nummer: ") 
+    exec_menu(choice)
+ 
+    return
+ 
+# Execute menu
+def exec_menu(choice):
+    os.system('clear')
+    ch = choice.lower()
+    if ch == '':
+        menu_actions['main_menu']()
+    else:
+        try:
+            menu_actions[ch]()
+        except KeyError:
+            print "Invalid selection, please try again.\n"
+            menu_actions['main_menu']()
+    return
+ 
+# systeem informatie
+def menu1():
+    execute_cmd("systeminfo")
+    return
+ 
+ 
+#ipconfig
+def menu2():
+    execute_cmd("ipconfig")
+    return
+
+#overscan
+def menu3():
+    execute_cmd("overscan")
+    return
+
+#rpi-update
+def menu4():
+    execute_cmd("rpi-update")
+    return
+
+#uninstall
+def menu5():
+    execute_cmd("TBuninstall")
+    return
+#afsluiten
+def exit():
+    sys.exit()
+ 
+# =======================
+#    MENUS DEFINITIONS
+# =======================
+ 
+# Menu definition
+menu_actions = {
+    'main_menu': main_menu,
+    '1': menu1,
+    '2': menu2,
+    '3': menu3,
+    '4': menu4,
+    '5': menu5,
+    '0': exit,
+}
+ 
+# =======================
+#      MAIN PROGRAM
+# =======================
+ 
+# Main Program
+if __name__ == "__main__":
+    # Launch main menu
+    main_menu()
+
+
