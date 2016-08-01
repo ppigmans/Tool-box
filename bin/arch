@@ -1,0 +1,14 @@
+#!/bin/bash
+
+arch=$(uname -i)
+if [[ $arch == x86_64* ]]; then
+    echo "X64 Processor"
+elif [[ $arch == i*86 ]]; then
+    echo "X32 Processor"
+elif  [[ $arch == arm* ]]; then
+    echo "ARM Processor"
+elif [[ $arhc == powerpc|ppc64 ]]; then
+    echo "PowerPC Processor"
+else
+        echo "Unknown processor"
+fi

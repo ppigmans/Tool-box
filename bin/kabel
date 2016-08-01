@@ -1,0 +1,12 @@
+#!/bin/bash
+
+kabel=$( ifconfig | grep -A 1 "eth" | sed 'N;s/\n/ /;N;s/\n/ /' | awk '{ print $7}' | cut -d: -f2 )
+
+
+if [ -z "$kabel" ]
+then
+echo "Geen ip gevonden, heeft u de goeie keuze gemaakt?"
+else
+echo "$kabel"
+fi
+

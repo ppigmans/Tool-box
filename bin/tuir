@@ -1,0 +1,58 @@
+#!/usr/bin/env python
+
+from os import system
+import curses
+
+def get_param(prompt_string):
+	screen.clear()
+	screen.border(0)
+	screen.addstr(2, 2, prompt_string)
+	screen.refresh()
+	input = screen.getstr(10, 10, 60)
+	return input
+
+def execute_cmd(cmd_string):
+	system("clear")
+	a = system(cmd_string)
+	
+
+x = 0
+
+while x != ord('6'):
+	screen = curses.initscr()
+
+	screen.clear()
+	screen.border(0)
+	screen.addstr(2, 2, "Kies wat u wil doen")
+	screen.addstr(4, 4, "1 - Systeem info achter halen")
+	screen.addstr(5, 4, "2 - uw IP adres achter halen")
+	screen.addstr(6, 4, "3 - Zwarte balken weg halen")
+	screen.addstr(7, 4, "4 - de raspberry pi updaten")
+	screen.addstr(8, 4, "5 - Tools Verwijderen")
+	screen.addstr(9, 4, "6 - Exit")
+	screen.refresh()
+
+	x = screen.getch()
+
+	if x == ord('1'):
+		curses.endwin()
+		execute_cmd("systeminfo")
+		exit()
+	if x == ord('2'):
+		curses.endwin()
+		execute_cmd("ipconfig")
+		exit()
+	if x == ord('3'):
+		curses.endwin()
+		execute_cmd("overscan")
+		exit()
+	if x == ord('4'):
+		curses.endwin()
+		execute_cmd("rpi-update")
+		exit()
+	if x == ord('5'):
+		curses.endwin()
+		execute_cmd("sh /usr/bin/TB/uninstaller.sh")
+		exit()
+curses.endwin()
+
