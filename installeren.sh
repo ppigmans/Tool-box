@@ -19,6 +19,7 @@ cp -r ./bin/set_overscan /usr/bin/set_overscan
 chmod +x ./bin/arch
 chmod +x ./bin/wifi
 chmod +x ./bin/kabel
+chmod +x ./bin/tuir
 chmod +x ./bin/systeminfo
 chmod +x ./bin/uninstaller.sh
 chmod +x ./bin/ipconfig.sh
@@ -59,11 +60,12 @@ chmod +x ./bin/kabel
 chmod +x ./bin/systeminfo
 chmod +x ./bin/uninstaller.sh
 chmod +x ./bin/ipconfig.sh
+chmod +x ./bin/tui
 mkdir /usr/bin/TB
-mv ./bin/arch /usr/bin/TB
-mv ./bin/wifi /usr/bin/TB
-mv ./bin/kabel /usr/bin/TB
-mv ./bin/uninstaller.sh /usr/bin/TB
+mv ./bin/arch /usr/bin/TB/
+mv ./bin/wifi /usr/bin/TB/
+mv ./bin/kabel /usr/bin/TB/
+mv ./bin/uninstaller.sh /usr/bin/TB/
 mv ./bin/systeminfo /usr/bin/systeminfo
 mv ./bin/ipconfig.sh /usr/bin/ipconfig
 mv ./bin/tui /usr/bin/Tool-box
