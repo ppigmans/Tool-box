@@ -14,6 +14,9 @@ rm -rf /usr/bin/systeminfo
 rm -rf /usr/bin/ipconfig
 rm -rf /usr/bin/rpi-update
 rm -rf /usr/bin/TB
+rm -rf /usr/bin/TBUI
+rm -rf /usr/bin/TBuninstall
+
 sleep 4
 echo "we zijn klaar met het Verwijderen :("
 echo
@@ -30,6 +33,8 @@ rm -rf /usr/bin/set_overscan
 rm -rf /usr/bin/systeminfo
 rm -rf /usr/bin/ipconfig
 rm -rf /usr/bin/TB
+rm -rf /usr/bin/TBUI
+rm -rf /usr/bin/TBuninstall
 sleep 4
 echo "we zijn klaar met het Verwijderen :("
 echo
