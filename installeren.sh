@@ -9,7 +9,7 @@ if [ "x$x" = "xja" ] ; then
 echo "Ok, we gaan de tools klaar zetten voor U."
 cd ./bin
 cd ./set_overscan
-apt-get install gcc automake curl make python -y
+apt-get install gcc automake curl make python python-tk idle python-pmw python-imaging -y
 make
 cd ..
 mv set_overscan.sh /usr/bin/overscan
@@ -23,6 +23,7 @@ chmod +x ./bin/TBUIR
 chmod +x ./bin/systeminfo
 chmod +x ./bin/uninstaller.sh
 chmod +x ./bin/ipconfig.sh
+chmod +x ./bin/TBMenur
 mkdir /usr/bin/TB
 mv ./bin/arch /usr/bin/TB/
 mv ./bin/wifi /usr/bin/TB/
@@ -31,7 +32,9 @@ mv ./bin/uninstaller.sh /usr/bin/TBuninstall
 mv ./bin/systeminfo /usr/bin/systeminfo
 mv ./bin/ipconfig.sh /usr/bin/ipconfig
 mv ./bin/TBUIR /usr/bin/TBUI
+mv ./bin/TBMenur /usr/bin/TBMenu
 wget https://pypi.python.org/packages/8a/48/a76be51647d0eb9f10e2a4511bf3ffb8cc1e6b14e9e4fab46173aa79f981/termcolor-1.1.0.tar.gz
+tar xf termcolor-1.1.0.tar.gz
 ./termcolor-1.1.0/setup.py install
 sudo curl -L --output /usr/bin/rpi-update https://raw.githubusercontent.com/Hexxeh/rpi-update/master/rpi-update && sudo chmod +x /usr/bin/rpi-update
 cd ..
@@ -48,7 +51,7 @@ else
 echo "installatie zonder raspberry pi onderdelen begonnen"
 cd ./bin
 cd ./set_overscan
-apt-get install gcc automake curl make python -y
+apt-get install gcc automake curl make python python-tk idle python-pmw python-imaging -y
 make
 cd ..
 mv set_overscan.sh /usr/bin/overscan
@@ -62,6 +65,7 @@ chmod +x ./bin/TBUIR
 chmod +x ./bin/systeminfo
 chmod +x ./bin/uninstaller.sh
 chmod +x ./bin/ipconfig.sh
+chmod +x ./bin/TBMenu
 mkdir /usr/bin/TB
 mv ./bin/arch /usr/bin/TB/
 mv ./bin/wifi /usr/bin/TB/
@@ -69,8 +73,10 @@ mv ./bin/kabel /usr/bin/TB/
 mv ./bin/uninstaller.sh /usr/bin/TBuninstall
 mv ./bin/systeminfo /usr/bin/systeminfo
 mv ./bin/ipconfig.sh /usr/bin/ipconfig
-mv ./bin/TBUIR /usr/bin/TBUI
+mv ./bin/TBUI /usr/bin/TBUI
+mv ./bin/TBMenu /usr/bin/TBMenu
 wget https://pypi.python.org/packages/8a/48/a76be51647d0eb9f10e2a4511bf3ffb8cc1e6b14e9e4fab46173aa79f981/termcolor-1.1.0.tar.gz
+tar xf termcolor-1.1.0.tar.gz
 ./termcolor-1.1.0/setup.py install
 cd ..
 rm -rf Tool-box

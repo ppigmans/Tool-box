@@ -1,0 +1,54 @@
+import Tkinter
+from Tkinter import *
+import subprocess
+import os
+from os import system as cmd
+
+def test():
+    os.system('sudo xterm -into %d -geometry 100x28 -sb -e overscan &' % wid)
+
+def sysinfo():
+    os.system('xterm -into %d -geometry 100x28 -sb -e systeminfo &' % wid)
+
+def ipconf():
+    os.system('xterm -into %d -geometry 100x28 -sb -e ipconfig &' % wid)
+
+def rpi():
+    os.system('sudo xterm -into %d -geometry 100x28 -sb -e rpi-update &' % wid)
+
+
+WINDOW_SIZE = "1024x768"
+top = Tkinter.Tk()
+top.geometry(WINDOW_SIZE)
+
+
+
+
+Button1  = Tkinter.Button(top, text ="Systeem informatie opvragen", command=sysinfo)
+Button1.pack()
+
+Button2  = Tkinter.Button(top, text ="IP adres achterhalen", command = ipconf)
+Button2.pack()
+
+Button3  = Tkinter.Button(top, text ="Zwarte balken weghalen", command = test)
+Button3.pack()
+
+Button4  = Tkinter.Button(top, text ="Raspberry pi update", command = rpi)
+Button4.pack()
+
+termf = Frame(top, height=1000, width=1000)
+
+termf.pack(fill=BOTH, expand=YES)
+wid = termf.winfo_id()
+
+
+def send_entry_to_terminal(*args):
+    """*args needed since callback may be called from no arg (button)
+   or one arg (entry)
+   """
+    cmd("%s" % (BasicCovTests))
+
+
+if __name__ == "__main__":
+     top.title('KEUZE MENU')
+     top.mainloop()
