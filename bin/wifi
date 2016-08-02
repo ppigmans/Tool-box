@@ -4,7 +4,7 @@ wifi=$( ifconfig | grep -A 1 "wlan" | sed 'N;s/\n/ /;N;s/\n/ /' | awk '{ print $
 
 if [ -z "$wifi" ]
 then
-echo "Geen ip gevonden, heeft u de goeie keuze gemaakt?"
+echo "Geen ip gevonden, zit deze aangesloten?"
 else
 echo "$wifi"
 fi
