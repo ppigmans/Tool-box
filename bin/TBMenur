@@ -16,6 +16,8 @@ def ipconf():
 def rpi():
     os.system('sudo xterm -into %d -geometry 100x28 -sb -e rpi-update &' % wid)
 
+def Uninstall():
+    os.system('sudo xterm -into %d -geometry 100x28 -sb -e TBuninstall &' % wid)
 
 WINDOW_SIZE = "1024x768"
 top = Tkinter.Tk()
@@ -35,6 +37,9 @@ Button3.pack()
 
 Button4  = Tkinter.Button(top, text ="Raspberry pi update", command = rpi)
 Button4.pack()
+
+Button5  = Tkinter.Button(top, text ="Tools verwijderen", command = Uninstall)
+Button.pack()
 
 termf = Frame(top, height=1000, width=1000)
 
