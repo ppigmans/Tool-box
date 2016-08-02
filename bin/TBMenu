@@ -3,8 +3,6 @@ from Tkinter import *
 import subprocess
 import os
 from os import system as cmd
-root = Tk()
-root.wm_title("TOOL MENU")
 
 def test():
     os.system('sudo xterm -into %d -geometry 100x28 -sb -e overscan &' % wid)
@@ -14,6 +12,9 @@ def sysinfo():
 
 def ipconf():
     os.system('xterm -into %d -geometry 51x11 -sb -e ipconfig &' % wid)
+
+def Uninstall():
+    os.system('sudo xterm -into %d -geometry 100x28 -sb -e TBuninstall &' % wid)
 
 WINDOW_SIZE = "1024x768"
 top = Tkinter.Tk()
@@ -27,6 +28,9 @@ Button2.pack()
 
 Button3  = Tkinter.Button(top, text ="Zwarte balken weghalen", command = test)
 Button3.pack()
+
+Button4 = Tkinter.Button(top, text = "Tools Verwijderen", command = Uninstall)
+Button4.pack()
 
 termf = Frame(top, height=1000, width=1000)
 
