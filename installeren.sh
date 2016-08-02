@@ -31,8 +31,8 @@ mv ./bin/uninstaller.sh /usr/bin/TBuninstall
 mv ./bin/systeminfo /usr/bin/systeminfo
 mv ./bin/ipconfig.sh /usr/bin/ipconfig
 mv ./bin/TBUIR /usr/bin/TBUI
-chmod +x ./bin/tc/setup.py
-./bin/tc/setup.py install
+wget https://pypi.python.org/packages/8a/48/a76be51647d0eb9f10e2a4511bf3ffb8cc1e6b14e9e4fab46173aa79f981/termcolor-1.1.0.tar.gz
+./termcolor-1.1.0/setup.py install
 sudo curl -L --output /usr/bin/rpi-update https://raw.githubusercontent.com/Hexxeh/rpi-update/master/rpi-update && sudo chmod +x /usr/bin/rpi-update
 cd ..
 rm -rf Tool-box
@@ -70,8 +70,8 @@ mv ./bin/uninstaller.sh /usr/bin/TBuninstall
 mv ./bin/systeminfo /usr/bin/systeminfo
 mv ./bin/ipconfig.sh /usr/bin/ipconfig
 mv ./bin/TBUIR /usr/bin/TBUI
-chmod +x ./bin/tc/setup.py
-./bin/tc/setup.py install
+wget https://pypi.python.org/packages/8a/48/a76be51647d0eb9f10e2a4511bf3ffb8cc1e6b14e9e4fab46173aa79f981/termcolor-1.1.0.tar.gz
+./termcolor-1.1.0/setup.py install
 cd ..
 rm -rf Tool-box
 sleep 4
