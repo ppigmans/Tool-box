@@ -27,8 +27,8 @@ arch=$( bash /usr/bin/TB/arch )
 
 # Meegenomen van mijn IPCONFIG script (laat het ip (enkel het ip) zien voor gebruikers gemak) 
 
-kabel=$( ifconfig | grep -A 1 "eth" | sed 'N;s/\n/ /;N;s/\n/ /' | awk '{ print $7}' | cut -d: -f2 )
-wifi=$( ifconfig | grep -A 1 "wlan" | sed 'N;s/\n/ /;N;s/\n/ /' | awk '{ print $7}' | cut -d: -f2 )
+kabel=$( bash /usr/bin/TB/kabel )
+wifi=$( bash /usr/bin/TB/wifi )
 
 # calculeren van Beide ram geheugen als hardeschijf ruimte
 
