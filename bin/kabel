@@ -1,12 +1,10 @@
 #!/bin/bash
-
 kabel=$( ifconfig | grep -A 1 "eth" | sed 'N;s/\n/ /;N;s/\n/ /' | awk '{ print $7}' | cut -d: -f2 )
+kabelch=$( ifconfig | grep -A 1 "eth" | sed 'N;s/\n/ /;N;s/\n/ /' | awk '{ print $7}' )
 
 
-if [ -z "$kabel" ]
-then
-echo "Geen ip gevonden, Zit deze aangesloten?"
+if echo "$kabelch" | grep -q "addr"; then
+    echo "$kabel"
 else
-echo "$kabel"
+    echo "Geen IP adres gevonden, zit deze wel aangesloten of heeft u misschien de verkeerde optie gekozen?"
 fi
-
