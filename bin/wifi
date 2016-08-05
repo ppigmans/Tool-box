@@ -1,11 +1,10 @@
 #!/bin/bash
-
 wifi=$( ifconfig | grep -A 1 "wlan" | sed 'N;s/\n/ /;N;s/\n/ /' | awk '{ print $7}' | cut -d: -f2 )
+wifich=$( ifconfig | grep -A 1 "wlan" | sed 'N;s/\n/ /;N;s/\n/ /' | awk '{ print $7}' )
 
-if [ -z "$wifi" ]
-then
-echo "Geen ip gevonden, zit deze aangesloten?"
+
+if echo "$wifich" | grep -q "addr"; then
+    echo "$wifi"
 else
-echo "$wifi"
+    echo "Geen IP adres gevonden, zit deze wel aangesloten of heeft u misschien de verkeerde optie gekozen?"
 fi
-
