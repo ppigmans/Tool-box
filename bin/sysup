@@ -1,0 +1,46 @@
+#!/bin/bash
+version=$( lsb_release -r | awk '{ print $2}' )
+update=$(do-release-upgrade -c |  sed 'N;s/\n/ /;N;s/\n/ /' | awk '{ print $9}' | cut -d "'" -f2 )
+rd=$(tput setaf 1) # Red/Rood
+gr=$(tput setaf 2) # Green/Groen
+gl=$(tput setaf 3) # Yellow/Geel
+bl=$(tput setaf 4) # Blue/Blauw
+pa=$(tput setaf 5) # Purple/Paars
+cy=$(tput setaf 6) # Cyan/Cyaan
+wi=$(tput setaf 7) # White/wit
+rst=$(tput sgr0)   # Reset colours/reset kleuren
+
+if [[ "$update" == "$version" ]];
+then
+update1=$(echo "geen update Beschikbaar")
+else
+update1=$(echo "een update Beschikbaar")
+
+echo
+echo $rd"				WAARSCHUWING				"$rst
+echo
+echo "er is $update1 mogelijk maar gevaarlijk, voor dat u verder gaat maak een backup!"
+echo
+echo "U maakt een backup als volgt: "
+sleep 2
+echo $gr"1.) sluit de machine af"
+echo "2.) haal de stroom aansluiting los"
+echo "3.) Haal de SD kaart er uit"
+echo "4.) breng deze naar een windows machine"
+echo "5.) op de windows machine installeer win32diskimager"
+echo "6.) Sluit de SD kaart aan op de windows machine"
+echo "7.) in win32diskimager vul een locatie en naam in, eindigend op .img"
+echo "8.) Druk nu op READ"
+echo "9.) Nu de backup is gemaakt kunt u de SD kaart er uit halen"
+echo "10.) sluit alles weer aan" $rst
+echo
+echo $rd"UPDATE ALLEEN MAAR ALS U DIT ZEKER WEET!"$rst
+echo
+sleep 3
+read -p "Als u dit heeft gedaan druk dan op 1, anders drukt u op 2"  ans;
+
+case $ans in
+	1) echo "Updaten gaat even duren!" && echo && echo Gemaakt door ${rd}Patrick Pigmans${rst} voor${cy} Servicenet ITF${rst} && echo && read  -n1 -r -p "Druk op een toets om de update te beginnen (ctrl+z om af te sluiten (laatste kans!))" && do-release-upgrade ;;
+	*) echo "Afsluiten" && echo && echo Gemaakt door ${rd}Patrick Pigmans${rst} voor${cy} Servicenet ITF${rst} && echo && read  -n1 -r -p "Druk op een toets om af te sluiten" ;;
+esac
+fi
