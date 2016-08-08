@@ -24,7 +24,9 @@ chmod +x ./bin/systeminfo
 chmod +x ./bin/uninstaller.sh
 chmod +x ./bin/ipconfig.sh
 chmod +x ./bin/TBMenur
+chmod +x ./bin/sysup
 mkdir /usr/bin/TB
+mv ./bin/sysup /usr/bin/sysup
 mv ./bin/arch /usr/bin/TB/
 mv ./bin/wifi /usr/bin/TB/
 mv ./bin/kabel /usr/bin/TB/
@@ -66,7 +68,9 @@ chmod +x ./bin/systeminfo
 chmod +x ./bin/uninstaller.sh
 chmod +x ./bin/ipconfig.sh
 chmod +x ./bin/TBMenu
+chmod +x ./bin/sysup
 mkdir /usr/bin/TB
+mv ./bin/sysup /usr/bin/sysup
 mv ./bin/arch /usr/bin/TB/
 mv ./bin/wifi /usr/bin/TB/
 mv ./bin/kabel /usr/bin/TB/
