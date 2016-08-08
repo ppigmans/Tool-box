@@ -26,7 +26,7 @@ shell=$(lsb_release -a | sed 'N;s/\n/ /;N;s/\n/ /' | awk '{ print $5,$6,$7}' | s
 arch=$( bash /usr/bin/TB/arch )
 
 # Meegenomen van mijn IPCONFIG script (laat het ip (enkel het ip) zien voor gebruikers gemak) 
-
+gb=1024
 kabel=$( bash /usr/bin/TB/kabel )
 wifi=$( bash /usr/bin/TB/wifi )
 
@@ -49,6 +49,11 @@ hdd3GBR=$( printf "%.1f" "$hdd3GB" | awk '{ total = $1 ; print total " GB" }' )
 mem1r=$( printf "%.1f" "$mem1" | awk '{ total = $1 ; print total " MB" }' )
 mem2r=$( printf "%.1f" "$mem2" | awk '{ total = $1 ; print total " MB" }' )
 mem3r=$( printf "%.1f" "$mem3" | awk '{ total = $1 ; print total " MB" }' )
+
+#calculeren
+
+
+hdd3c=$( printf "%.1f" "$hdd3" | awk '{ total = $1 ; print total }' | awk '{printf("%d\n",$1 + 0.5)}'  )
 
 
 #commands
@@ -76,7 +81,7 @@ echo ${rd}$mem1r ${rst}/ ${cy}$mem3r ${rst}/ ${gr}$mem2r ${rst}   # dit laat zie
 echo
 echo ${gl}"Schijfruimte vrij (rood is de hoeveelheid schijfruimte er in het systeem is, groen is wat er nog beschikbaar is, blauw is wat er momenteel in gebruik is)" ${rst}
 
-if [ $hdd3 > 1024 ];
+if [[ "$hdd3c" -gt "$gb" ]];
 then
 echo ${rd}$hdd1r ${rst}/ ${cy}$hdd3GBR ${rst}/ ${gr}$hdd2r ${rst} # dit laat zien (in volgorde: hoeveelheid, in gebruik, beschikbaar) voor Hardeschijf ruimte
 echo
@@ -88,7 +93,7 @@ echo
 exit 1
 fi
 
-if [ $hdd3 < 1024 ];
+if [[ "$hdd3c" -lt "$gb" ]];
 then
 echo ${rd}$hdd1r ${rst}/ ${cy}$hdd3r ${rst}/ ${gr}$hdd2r ${rst} # dit laat zien (in volgorde: hoeveelheid, in gebruik, beschikbaar) voor Hardeschijf ruimte
 echo
