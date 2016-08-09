@@ -38,7 +38,7 @@ echo $gr "Successvol de NIC van het systeem aan de NIC van de configuratie gekop
 echo
 echo "Gemaakt door ${rd}Patrick Pigmans${rst} voor${cy} Servicenet ITF${rst}"
 echo
-read -n1 =r =p "Druk op een toets om door te gaan..." key
+read -n1 -r -p "Druk op een toets om door te gaan..." key
 echo
 exit 1
 fi
