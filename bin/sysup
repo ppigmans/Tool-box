@@ -14,14 +14,14 @@ rst=$(tput sgr0)   # Reset colours/reset kleuren
 
 if [[ ${update%.*.*} -le ${version%.*} ]];
 then
-update1=$(echo "geen update Beschikbaar")
+update1=$(echo $gr"geen update Beschikbaar"$rst)
 else
-update1=$(echo "een update Beschikbaar")
+update1=$(echo $rd"een update Beschikbaar"$rst)
 
 echo
 echo $rd"				WAARSCHUWING				"$rst
 echo
-echo "er is $update1 mogelijk maar gevaarlijk, voor dat u verder gaat maak een backup!"
+echo "er is $update1 maar gevaarlijk, voor dat u verder gaat maak een backup!"
 echo
 echo "U maakt een backup als volgt: "
 sleep 2
@@ -39,10 +39,13 @@ echo
 echo $rd"UPDATE ALLEEN MAAR ALS U DIT ZEKER WEET!"$rst
 echo
 sleep 3
-read -p "Als u dit heeft gedaan druk dan op 1, anders drukt u op 2"  ans;
 
+echo "er is $update1" 
+echo
+read -p "Als u wilt updaten druk op 1, anders drukt u op 2"  ans;
+echo
 case $ans in
-	1) echo "Updaten gaat even duren!" && echo && echo Gemaakt door ${rd}Patrick Pigmans${rst} voor${cy} Servicenet ITF${rst} && echo && read  -n1 -r -p "Druk op een toets om de update te beginnen (ctrl+z om af te sluiten (laatste kans!))" && do-release-upgrade ;;
-	*) echo "Afsluiten" && echo && echo Gemaakt door ${rd}Patrick Pigmans${rst} voor${cy} Servicenet ITF${rst} && echo && read  -n1 -r -p "Druk op een toets om af te sluiten" ;;
+	1) echo "Updaten gaat even duren!" && echo && echo Gemaakt door ${rd}Patrick Pigmans${rst} voor${cy} Servicenet ITF${rst} && echo && read  -n1 -r -p "Druk op een toets om de update te beginnen (ctrl+z om af te sluiten (laatste kans!))" && do-release-upgrade && echo && echo "nu moet de machine herstart worden" && echo && echo Gemaakt door ${rd}Patrick Pigmans${rst} voor ${cy}Servicenet ITF${rst} && echo && read -n1 -r -p "Druk op een toets om opnieuw op te starten" && echo;;
+	*) echo "Afsluiten" && echo && echo Gemaakt door ${rd}Patrick Pigmans${rst} voor${cy} Servicenet ITF${rst} && echo && read  -n1 -r -p "Druk op een toets om af te sluiten" && echo ;;
 esac
 fi
