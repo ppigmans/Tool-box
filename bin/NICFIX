@@ -1,0 +1,37 @@
+#!/bin/bash
+
+rd=$(tput setaf 1) # Red/Rood
+gr=$(tput setaf 2) # Green/Groen
+gl=$(tput setaf 3) # Yellow/Geel
+bl=$(tput setaf 4) # Blue/Blauw
+pa=$(tput setaf 5) # Purple/Paars
+cy=$(tput setaf 6) # Cyan/Cyaan
+wi=$(tput setaf 7) # White/Wit
+rst=$(tput sgr0) # Text reset.
+
+syseth=$(cat /etc/network/interfaces | awk '{print $2}' | sed 'N;s/\n/ /;N;s/\n/ /' | awk '{print $1}'| sed 'N;s/\n/ /;N;s/\n/ /' | sed 'N;s/\n/ /;N;s/\n/ /' | awk '{print $4}') 
+cureth=$(ip link | grep -A 1 eth | awk ' {print $2}' | sed 'N;s/\n/ /;N;s/\n/ /' | awk '{ print $1}' | sed 'N;s/\n/ /;N;s/\n/ /'| awk '{print $1}' | cut -d : -f1)
+
+if [[ "$cureth" == "$syseth" ]];
+then
+echo
+echo $gr"De NIC van het systeem in het zelfde als de NIC van de configuratie van de OS"$rst
+echo
+echo "Gemaakt door ${rd}Patrick Pigmans${rst} voor${cy} Servicenet ITF${rst}"
+echo
+
+else
+echo
+echo $rd"Het ID van de NIC van het Systeem is niet gelijk aan de NIC die staat ingesteld in de configuratie van de OS"$rst
+sed -i "s/$syseth/$cureth/g" /etc/network/interfaces 
+echo
+echo $gl"Een moment gedult AUB"$rst
+echo
+sleep 4
+ifup $cureth
+echo
+echo $gr "Successvol de NIC van het systeem aan de NIC van de configuratie gekoppeld" $rst
+echo
+echo "Gemaakt door ${rd}Patrick Pigmans${rst} voor${cy} Servicenet ITF${rst}"
+echo
+fi

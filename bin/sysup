@@ -1,4 +1,6 @@
 #!/bin/bash
+
+
 version=$( lsb_release -r | awk '{ print $2}' )
 update=$(do-release-upgrade -c |  sed 'N;s/\n/ /;N;s/\n/ /' | awk '{ print $9}' | cut -d "'" -f2 )
 rd=$(tput setaf 1) # Red/Rood
@@ -10,7 +12,7 @@ cy=$(tput setaf 6) # Cyan/Cyaan
 wi=$(tput setaf 7) # White/wit
 rst=$(tput sgr0)   # Reset colours/reset kleuren
 
-if [[ "$update" == "$version" ]];
+if [[ ${update%.*.*} -le ${version%.*} ]];
 then
 update1=$(echo "geen update Beschikbaar")
 else
