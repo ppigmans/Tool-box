@@ -15,6 +15,14 @@ rst=$(tput sgr0)   # Reset colours/reset kleuren
 if [[ ${update%.*.*} -le ${version%.*} ]];
 then
 update1=$(echo $gr"geen update Beschikbaar"$rst)
+echo
+echo $gr"er is $update1"$rst
+echo
+echo "Gemaakt door ${rd}Patrick Pigmans${rst} voor${cy} Servicenet ITF${rst}"
+echo
+read  -n1 -r -p "Druk op een toets om door te gaan..."
+echo
+
 else
 update1=$(echo $rd"een update Beschikbaar"$rst)
 
