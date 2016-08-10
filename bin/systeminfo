@@ -30,11 +30,29 @@ gb=1024
 kabel=$( bash /usr/bin/TB/kabel )
 wifi=$( bash /usr/bin/TB/wifi )
 
-# calculeren van Beide ram geheugen als hardeschijf ruimte
 
+
+# calculeren van ram voor 16.04 en alles daar onder
+
+if [[ -n "$shell" && $shell == *16.* ]];
+then
+mem1=$( free | sed 'N;s/\n/ /;N;s/\n/ /' | awk '{ print $8 }' | awk '{ total = $1 / 1024 ; print total }' | sed 'N;s/\n/ /;N;s/\n/ /' | awk '{ print $1}' )
+mem2c=$( free | sed 'N;s/\n/ /;N;s/\n/ /' | awk '{ print $10}' | awk '{ total = $1 / 1024 ; print total }' | sed 'N;s/\n/ /;N;s/\n/ /' | awk '{ print $1}' )
+mem3=$( free | sed 'N;s/\n/ /;N;s/\n/ /' | awk '{ print $9}' | awk '{ total = $1 / 1024 ; print total }' | sed 'N;s/\n/ /;N;s/\n/ /' | awk '{ print $1}' )
+mem2f=$( free | sed 'N;s/\n/ /;N;s/\n/ /' | awk '{ print $12}' | awk '{ total = $1 / 1024 ; print total }' | sed 'N;s/\n/ /;N;s/\n/ /' | awk '{ print $1}')
+mem2=$(awk "BEGIN {print $mem2c+$mem2f; exit}")
+
+
+
+
+else
 mem1=$( free | sed 'N;s/\n/ /;N;s/\n/ /' | awk '{ print $8 }' | awk '{ total = $1 / 1024 ; print total }' | sed 'N;s/\n/ /;N;s/\n/ /' | awk '{ print $1}' )
 mem2=$( free | sed 'N;s/\n/ /;N;s/\n/ /' | awk '{ print $17}' | awk '{ total = $1 / 1024 ; print total }' | sed 'N;s/\n/ /;N;s/\n/ /' | awk '{ print $1}' )
 mem3=$( free | sed 'N;s/\n/ /;N;s/\n/ /' | awk '{ print $16}' | awk '{ total = $1 / 1024 ; print total }' | sed 'N;s/\n/ /;N;s/\n/ /' | awk '{ print $1}' )
+fi
+
+# Calculeren van HDD ruimte
+
 hdd3=$( df -k . | sed 'N;s/\n/ /;N;s/\n/ /' | awk '{ print $10}' | awk '{ total = $1 / 1024 ; print total }')
 hdd1=$( df -k . | sed 'N;s/\n/ /;N;s/\n/ /' | awk '{ print $9 }' | awk '{ total = $1 / 1024 / 1024 ; print total }')
 hdd2=$( df -k . | sed 'N;s/\n/ /;N;s/\n/ /' | awk '{ print $11}' | awk '{ total = $1 / 1024 / 1024 ; print total }')
