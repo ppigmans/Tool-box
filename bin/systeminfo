@@ -19,7 +19,7 @@ version=$(echo Service pi LXDE 2.1)
 
 # Laat de versie zien van Ubuntu
 
-shell=$(lsb_release -a | sed 'N;s/\n/ /;N;s/\n/ /' | awk '{ print $5,$6,$7}' | sed 'N;s/\n/ /;N;s/\n/ /')
+shell=$(lsb_release -d awk '{ print $2,$3,$3}' | sed 'N;s/\n/ /;N;s/\n/ /')
 
 # Laat de architectuur van de processor zien
 
