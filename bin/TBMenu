@@ -15,16 +15,16 @@ import os
 from os import system as cmd
 
 def test():
-    os.system('sudo xterm -into %d -geometry 100x28 -sb -e overscan &' % wid)
+    os.system('sudo xterm -into %d -geometry 100x28 -sb -e overscan &' % terminfo)
 
 def sysinfo():
-    os.system('xterm -into %d -geometry 100x28 -sb -e systeminfo &' % wid)
+    os.system('xterm -into %d -geometry 100x28 -sb -e systeminfo &' % terminfo)
 
 def ipconf():
-    os.system('xterm -into %d -geometry 51x11 -sb -e ipconfig &' % wid)
+    os.system('xterm -into %d -geometry 51x11 -sb -e ipconfig &' % terminfo)
 
 def Uninstall():
-    os.system('sudo xterm -into %d -geometry 100x28 -sb -e TBuninstall &' % wid)
+    os.system('sudo xterm -into %d -geometry 100x28 -sb -e TBuninstall &' % terminfo)
 
 WINDOW_SIZE = "1024x768"
 top = Tkinter.Tk()
@@ -42,16 +42,13 @@ Button3.pack()
 Button4 = Tkinter.Button(top, text = "Tools Verwijderen", command = Uninstall)
 Button4.pack()
 
-termf = Frame(top, height=1000, width=1000)
+termin = Frame(top, height=1000, width=1000)
 
-termf.pack(fill=BOTH, expand=YES)
-wid = termf.winfo_id()
+termin.pack(fill=BOTH, expand=YES)
+terminfo = termin.winfo_id()
 
 
 def send_entry_to_terminal(*args):
-    """*args needed since callback may be called from no arg (button)
-   or one arg (entry)
-   """
     cmd("%s" % (BasicCovTests))
 
 if __name__ == "__main__":
